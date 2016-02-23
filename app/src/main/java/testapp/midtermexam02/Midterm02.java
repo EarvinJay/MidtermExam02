@@ -20,8 +20,8 @@ import java.util.HashMap;
 public class Midterm02 extends ListActivity {
 
     private ProgressDialog pDialog;
-    private static String url="http://joseniandroid.herokuapp.com/api/books";
-
+    private static String apiurl="http://joseniandroid.herokuapp.com/api/books";
+    private static String baseurl="http://joseniandroid.herokuapp.com";
     private static final String TAG_books="BOOK";
     private static final String TAG_title="TITLE";
     private static final String TAG_genre="GENRE";
@@ -63,7 +63,7 @@ public class Midterm02 extends ListActivity {
             httpUtils http = new httpUtils();
 
 
-            String jsonStr = http.getResponse(url,http.GET);
+            String jsonStr = http.getResponse(apiurl,baseurl);
 
             Log.d("Response: ", "> " + jsonStr);
 

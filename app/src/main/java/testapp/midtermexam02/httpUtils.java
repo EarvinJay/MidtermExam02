@@ -46,6 +46,8 @@ public class httpUtils {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
 
+
+
         try {
             URL url = new URL(sUrl);
 
