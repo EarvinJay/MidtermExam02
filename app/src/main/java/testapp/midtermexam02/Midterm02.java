@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class Midterm02 extends ListActivity {
 
     private ProgressDialog pDialog;
-    private static String url="http://172.17.3.51:5856/api/books";
+    private static String url="http://joseniandroid.herokuapp.com/api/books";
 
     private static final String TAG_books="BOOK";
     private static final String TAG_title="TITLE";
@@ -42,6 +42,7 @@ public class Midterm02 extends ListActivity {
         ListView lv = getListView();
 
 
+
     }
     private class GetBooks extends AsyncTask<Void, Void, Void> {
 
@@ -58,11 +59,11 @@ public class Midterm02 extends ListActivity {
 
         @Override
         protected Void doInBackground(Void... arg0) {
-          
+
             httpUtils http = new httpUtils();
 
 
-            String jsonStr = http.getResponse(url,null);
+            String jsonStr = http.getResponse(url,http.GET);
 
             Log.d("Response: ", "> " + jsonStr);
 
@@ -98,7 +99,7 @@ public class Midterm02 extends ListActivity {
                     e.printStackTrace();
                 }
             } else {
-                Log.d("HTTPUTILS", "Couldn't get any data from the url");
+                Log.d("httpUtils", "Couldn't get any data from the url");
             }
 
             return null;

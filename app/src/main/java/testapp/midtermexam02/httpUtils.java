@@ -16,6 +16,15 @@ import java.net.URL;
  */
 public class httpUtils {
 
+    public final static int GET = 1;
+
+    public httpUtils()
+    {
+
+    }
+
+
+
     private static final String LOG_TAG = httpUtils.class.getSimpleName();
 
     /**
@@ -25,6 +34,7 @@ public class httpUtils {
      * @param requestMethod the method used for requesting data (e.g., POST, GET, PUT, DELETE, etc).
      * @return the response data in String format.
      */
+
     public static String getResponse(String sUrl, String requestMethod) {
         if (TextUtils.isEmpty(sUrl)) {
             throw new RuntimeException("Passed URL is either null or empty.");
@@ -74,7 +84,7 @@ public class httpUtils {
             return buffer.toString();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e(LOG_TAG, "Error retrieving data from server", e);
+            Log.d(LOG_TAG, "Error retrieving data from server", e);
             return null;
         } finally {
             if (urlConnection != null) {
@@ -84,7 +94,7 @@ public class httpUtils {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    Log.e(LOG_TAG, "Error closing stream", e);
+                    Log.d(LOG_TAG, "Error closing stream", e);
                 }
             }
         }
@@ -97,7 +107,7 @@ public class httpUtils {
      * @param requestMethod the method used for requesting data (e.g., POST, GET, PUT, DELETE, etc).
      * @return the response data in String format.
      */
-    public static String getResponse(Uri uri, String requestMethod) {
+    public static String getResponse(String uri, int requestMethod) {
         return getResponse(uri.toString(), requestMethod);
     }
 }
